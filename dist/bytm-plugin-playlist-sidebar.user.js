@@ -1,20 +1,20 @@
 // ==UserScript==
 // @name         BetterYTM Playlist Sidebar
 // @namespace    https://github.com/eissar
-// @version      0.1.0
+// @version      0.1.1
 // @author       eissar
 // @description  Sorts and filters the YouTube Music sidebar playlist list, with server-backed Recently Played and Recent Activity orders.
 // @license      MIT
 // @copyright    Copyright 2026 eissar
-// @icon         https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/f491789/assets/plugin_icon_128x128.png#sha256=4GgH3wuDgVjYVPf1s6NURcDU0QvjnLCigrlKowsF6x8=
+// @icon         https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/6b1e287/assets/plugin_icon_128x128.png#sha256=4GgH3wuDgVjYVPf1s6NURcDU0QvjnLCigrlKowsF6x8=
 // @homepage     https://github.com/eissar/bytm-plugin-playlist-sidebar
 // @homepageURL  https://github.com/eissar/bytm-plugin-playlist-sidebar
 // @source       https://github.com/eissar/bytm-plugin-playlist-sidebar.git
 // @supportURL   https://github.com/eissar/bytm-plugin-playlist-sidebar/issues
 // @match        https://youtube.com/*
 // @match        https://music.youtube.com/*
-// @resource     icon_1000  https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/f491789/assets/plugin_icon_1000x1000.png#sha256=IrFR29ZTCXuH5WsSVcmPn5FA+GvBopOyGR9lFSi4s5c=
-// @resource     icon_128   https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/f491789/assets/plugin_icon_128x128.png#sha256=4GgH3wuDgVjYVPf1s6NURcDU0QvjnLCigrlKowsF6x8=
+// @resource     icon_1000  https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/6b1e287/assets/plugin_icon_1000x1000.png#sha256=IrFR29ZTCXuH5WsSVcmPn5FA+GvBopOyGR9lFSi4s5c=
+// @resource     icon_128   https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/6b1e287/assets/plugin_icon_128x128.png#sha256=4GgH3wuDgVjYVPf1s6NURcDU0QvjnLCigrlKowsF6x8=
 // @connect      i.ytimg.com
 // @connect      youtube.com
 // @connect      github.com
@@ -29,7 +29,7 @@
 
   const userscriptName = "BetterYTM Playlist Sidebar";
   const description = "Sorts and filters the YouTube Music sidebar playlist list, with server-backed Recently Played and Recent Activity orders.";
-  const version = "0.1.0";
+  const version = "0.1.1";
   const homepage = "https://github.com/eissar/bytm-plugin-playlist-sidebar";
   const changelogUrl = "https://github.com/eissar/bytm-plugin-playlist-sidebar/blob/main/changelog.md";
   const namespace = "https://github.com/eissar";
@@ -91,7 +91,7 @@
   }
   const rawConsts = {
     buildMode: "production",
-    buildNumber: "f491789"
+    buildNumber: "6b1e287"
   };
   const getConst = (constKey, defaultVal) => {
     const val = rawConsts[constKey];

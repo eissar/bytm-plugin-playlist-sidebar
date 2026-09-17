@@ -2,7 +2,7 @@
   "name": "bytm-plugin-playlist-sidebar",
   "userscriptName": "BetterYTM Playlist Sidebar",
   "description": "Sorts and filters the YouTube Music sidebar playlist list, with server-backed Recently Played and Recent Activity orders.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/eissar/bytm-plugin-playlist-sidebar",
   "changelogUrl": "https://github.com/eissar/bytm-plugin-playlist-sidebar/blob/main/changelog.md",
   "namespace": "https://github.com/eissar",
