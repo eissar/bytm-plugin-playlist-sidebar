@@ -1,5 +1,5 @@
 import type { InterfaceEvents } from "@bytm/src/interface.ts";
-import type { BytmObject } from "@bytm/src/types.js";
+import type { BytmObject, PluginDef, PluginRegisterResult } from "@bytm/src/types.js";
 
 declare global {
   interface Window {
@@ -12,7 +12,9 @@ declare global {
     "bytm:lyricsCacheReady": CustomEvent<InterfaceEvents["bytm:lyricsCacheReady"]>;
     "bytm:setLocale": CustomEvent<InterfaceEvents["bytm:setLocale"]>;
     "bytm:preInitPlugin": CustomEvent<InterfaceEvents["bytm:preInitPlugin"]>;
-    "bytm:registerPlugin": CustomEvent<InterfaceEvents["bytm:registerPlugin"]>;
+    // BYTM v3.1.0 returns `PluginRegisterResult` synchronously; v4 returns a Promise.
+    // Widening to `Promise<...> | ...` keeps this typechecking against both, since `tryRegisterPlugin` awaits it either way.
+    "bytm:registerPlugin": CustomEvent<(def: PluginDef) => Promise<PluginRegisterResult> | PluginRegisterResult>;
     "bytm:observersReady": CustomEvent<InterfaceEvents["bytm:observersReady"]>;
     "bytm:featureInitStarted": CustomEvent<InterfaceEvents["bytm:featureInitStarted"]>;
     "bytm:featureInitialized": CustomEvent<InterfaceEvents["bytm:featureInitialized"]>;

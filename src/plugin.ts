@@ -3,17 +3,15 @@
  * @description Registers the plugin with BetterYTM's API and provides the plugin definition, events, and token as exports.
  */
 
-import { PluginIntent, type PluginDef, type PluginRegisterResult } from "@bytm/src/types.js";
+import type { PluginDef, PluginRegisterResult } from "@bytm/src/types.js";
 import pkg from "@root/package.json" with { type: "json" };
 
 // #region pluginDef
 /** This object contains all the metadata of your plugin that is used by BetterYTM to display information about your plugin */
 export const pluginDef: PluginDef = {
   // The permissions of the plugin:
-  intents: [
-    PluginIntent.ReadFeatureConfig,
-    PluginIntent.CreateModalDialogs,
-  ],
+  // This plugin only manipulates the DOM and calls InnerTube directly, so it needs no BYTM permissions.
+  intents: [],
   // The metadata of the plugin:
   plugin: {
     name: pkg.userscriptName,
@@ -56,7 +54,8 @@ export let token: PluginRegisterResult["token"];
  * Throws if the {@linkcode pluginDef} is wrong.
  */
 export async function tryRegisterPlugin(event: WindowEventMap["bytm:registerPlugin"]) {
-  const res = event.detail(pluginDef);
+  // `await` works with BYTM v3.1.0's synchronous `registerPlugin` and is required by BYTM v4, which returns a Promise.
+  const res = await event.detail(pluginDef);
   events = res.events;
   token = res.token;
 
