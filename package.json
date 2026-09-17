@@ -1,0 +1,78 @@
+{
+  "name": "bytm-plugin-playlist-sidebar",
+  "userscriptName": "BetterYTM Playlist Sidebar",
+  "description": "Sorts and filters the YouTube Music sidebar playlist list, with server-backed Recently Played and Recent Activity orders.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/eissar/bytm-plugin-playlist-sidebar",
+  "changelogUrl": "https://github.com/eissar/bytm-plugin-playlist-sidebar/blob/main/changelog.md",
+  "namespace": "https://github.com/eissar",
+  "license": "MIT",
+  "licenseUrl": "https://github.com/eissar/bytm-plugin-playlist-sidebar/blob/main/LICENSE.txt",
+  "author": {
+    "name": "eissar",
+    "url": "https://github.com/eissar"
+  },
+  "private": false,
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/eissar/bytm-plugin-playlist-sidebar/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eissar/bytm-plugin-playlist-sidebar.git"
+  },
+  "scripts": {
+    "dev": "concurrently \"nodemon --exec pnpm build-dev -- -- --serve\" \"pnpm serve\"",
+    "build-dev": "vite build --mode development",
+    "build": "vite build --mode production",
+    "serve": "node --import tsx ./src/tools/serve.ts",
+    "lint": "eslint src/**/*",
+    "format": "eslint --fix src/**/*"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src/**",
+      "assets/**",
+      "vite.config.ts",
+      ".env",
+      "changelog.md",
+      "package.json"
+    ],
+    "ext": "ts,mts,js,jsx,mjs,json,html,css,svg,png",
+    "ignore": [
+      "node_modules/**",
+      "dist/**"
+    ]
+  },
+  "engines": {
+    "node": ">=22",
+    "pnpm": ">=8"
+  },
+  "dependencies": {
+    "@sv443-network/coreutils": "^2.0.3",
+    "@sv443-network/userutils": "^9.4.4",
+    "compare-versions": "^6.1.1",
+    "nanoevents": "^9.1.0",
+    "tslib": "^2.8.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.7",
+    "@eslint/js": "^9.39.5",
+    "@types/express": "^4.17.25",
+    "@types/node": "^22.20.1",
+    "@types/tampermonkey": "^5.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.69.0",
+    "@typescript-eslint/parser": "^8.69.0",
+    "concurrently": "^8.2.2",
+    "dotenv": "^16.6.1",
+    "eslint": "^9.39.5",
+    "express": "^4.22.2",
+    "globals": "^15.15.0",
+    "nodemon": "^3.1.14",
+    "tsx": "^4.23.13",
+    "typescript": "^5.9.3",
+    "vite": "^5.4.21",
+    "vite-plugin-monkey": "^4.0.6",
+    "vite-tsconfig-paths": "^5.1.4"
+  }
+}
