@@ -1,20 +1,20 @@
 // ==UserScript==
 // @name         BetterYTM Playlist Sidebar
 // @namespace    https://github.com/eissar
-// @version      0.1.1
+// @version      0.1.2
 // @author       eissar
 // @description  Sorts and filters the YouTube Music sidebar playlist list, with server-backed Recently Played and Recent Activity orders.
 // @license      MIT
 // @copyright    Copyright 2026 eissar
-// @icon         https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/6b1e287/assets/plugin_icon_128x128.png#sha256=4GgH3wuDgVjYVPf1s6NURcDU0QvjnLCigrlKowsF6x8=
+// @icon         https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/cea14af/assets/plugin_icon_128x128.png#sha256=4GgH3wuDgVjYVPf1s6NURcDU0QvjnLCigrlKowsF6x8=
 // @homepage     https://github.com/eissar/bytm-plugin-playlist-sidebar
 // @homepageURL  https://github.com/eissar/bytm-plugin-playlist-sidebar
 // @source       https://github.com/eissar/bytm-plugin-playlist-sidebar.git
 // @supportURL   https://github.com/eissar/bytm-plugin-playlist-sidebar/issues
 // @match        https://youtube.com/*
 // @match        https://music.youtube.com/*
-// @resource     icon_1000  https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/6b1e287/assets/plugin_icon_1000x1000.png#sha256=IrFR29ZTCXuH5WsSVcmPn5FA+GvBopOyGR9lFSi4s5c=
-// @resource     icon_128   https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/6b1e287/assets/plugin_icon_128x128.png#sha256=4GgH3wuDgVjYVPf1s6NURcDU0QvjnLCigrlKowsF6x8=
+// @resource     icon_1000  https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/cea14af/assets/plugin_icon_1000x1000.png#sha256=IrFR29ZTCXuH5WsSVcmPn5FA+GvBopOyGR9lFSi4s5c=
+// @resource     icon_128   https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/cea14af/assets/plugin_icon_128x128.png#sha256=4GgH3wuDgVjYVPf1s6NURcDU0QvjnLCigrlKowsF6x8=
 // @connect      i.ytimg.com
 // @connect      youtube.com
 // @connect      github.com
@@ -29,7 +29,7 @@
 
   const userscriptName = "BetterYTM Playlist Sidebar";
   const description = "Sorts and filters the YouTube Music sidebar playlist list, with server-backed Recently Played and Recent Activity orders.";
-  const version = "0.1.1";
+  const version = "0.1.2";
   const homepage = "https://github.com/eissar/bytm-plugin-playlist-sidebar";
   const changelogUrl = "https://github.com/eissar/bytm-plugin-playlist-sidebar/blob/main/changelog.md";
   const namespace = "https://github.com/eissar";
@@ -91,7 +91,7 @@
   }
   const rawConsts = {
     buildMode: "production",
-    buildNumber: "6b1e287"
+    buildNumber: "cea14af"
   };
   const getConst = (constKey, defaultVal) => {
     const val = rawConsts[constKey];
@@ -1068,33 +1068,30 @@
       setTimeout(tryInjectSortButton, 100);
     });
   }
-  unsafeWindow.addEventListener("bytm:registerPlugin", (event) => {
+  function onceWindowEvent(eventName) {
+    return new Promise((resolve) => {
+      unsafeWindow.addEventListener(eventName, () => resolve(), { once: true });
+    });
+  }
+  unsafeWindow.addEventListener("bytm:registerPlugin", async (event) => {
     log("bytm:registerPlugin was emitted");
-    const registration = tryRegisterPlugin(event);
-    let started = false;
-    const start = (reason) => {
-      if (started) return;
-      started = true;
-      log(`${reason} - initializing the plugin...`);
-      initPlaylistSorter();
-    };
-    events == null ? void 0 : events.once("bytm:ready", () => start("bytm:ready was emitted"));
-    registration.then(() => {
-      var _a;
+    try {
+      await tryRegisterPlugin(event);
       log(`Registered plugin successfully!
 Using BetterYTM v${unsafeWindow.BYTM.version}
 Plugin build number: ${buildNumber} (${buildMode} mode)`);
-      if (!started) {
-        if ((_a = unsafeWindow.BYTM) == null ? void 0 : _a.ready) {
-          start("BYTM reported it was already ready");
-        } else {
-          events == null ? void 0 : events.once("bytm:ready", () => start("bytm:ready was emitted"));
-        }
-      }
-    }).catch((err) => {
+    } catch (err) {
       alert("Couldn't register the plugin. Refer to the console for more information.");
       console.error("Couldn't register plugin due to error:", err);
-    });
+      return;
+    }
+    try {
+      await onceWindowEvent("bytm:allReady");
+      log("bytm:allReady was emitted - initializing the plugin...");
+      initPlaylistSorter();
+    } catch (err) {
+      console.error("A generic error occurred:", err);
+    }
   });
 
 })();
