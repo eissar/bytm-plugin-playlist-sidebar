@@ -33,7 +33,7 @@ export const pluginDef: PluginDef = {
     },
     // If you have a logo, you can add it here - it should *ideally* be square and between 48x48 and 128x128.
     // Also make sure it is hosted on a server where CORS is enabled (like the GitHub CDN below), otherwise the browser will block it.
-    iconUrl: "https://raw.githubusercontent.com/Sv443/BetterYTM-Plugin-Template/main/assets/plugin_icon_128x128.png",
+    iconUrl: "https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/main/assets/plugin_icon_128x128.png",
   },
   // If you have contributors defined in package.json, you can add them here:
   // contributors,

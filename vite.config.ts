@@ -28,7 +28,7 @@ export const defaultPort = 8767;
 export const defaultRepo = "Sv443/BetterYTM-Plugin-Template";
 
 
-const repo = repository.url.match(/github.com\/(.+?\/.+?)\//)?.[1] ?? defaultRepo;
+const repo = repository.url.match(/github\.com[/:]([^/]+)\/([^/]+?)(?:\.git)?(?:\/|$)/)?.slice(1, 3).join("/") ?? defaultRepo;
 
 const cliPortRaw = Number(argv.find(arg => arg.startsWith("--port="))?.split("=")[1]);
 const envPortRaw = Number(env.DEV_SERVER_PORT);

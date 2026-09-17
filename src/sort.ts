@@ -486,7 +486,7 @@ function cleanupPrimarySection() {
 function cleanupNewPlaylistButton() {
   const newPlaylistBtn = findNewPlaylistButton();
   if (newPlaylistBtn) {
-    const anchor = newPlaylistBtn.closest("yt-button-shape") ?? newPlaylistBtn;
+    const anchor = newPlaylistBtn.closest<HTMLElement>("yt-button-shape") ?? newPlaylistBtn;
     anchor.style.removeProperty("flex");
     anchor.style.removeProperty("min-width");
     const parent = anchor.parentElement;

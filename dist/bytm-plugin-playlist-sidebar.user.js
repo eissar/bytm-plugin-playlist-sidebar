@@ -6,15 +6,15 @@
 // @description  Sorts and filters the YouTube Music sidebar playlist list, with server-backed Recently Played and Recent Activity orders.
 // @license      MIT
 // @copyright    Copyright 2026 eissar
-// @icon         https://raw.githubusercontent.com/Sv443/BetterYTM-Plugin-Template/BUILD_ERROR/assets/plugin_icon_128x128.png#sha256=4GgH3wuDgVjYVPf1s6NURcDU0QvjnLCigrlKowsF6x8=
+// @icon         https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/357d167/assets/plugin_icon_128x128.png#sha256=4GgH3wuDgVjYVPf1s6NURcDU0QvjnLCigrlKowsF6x8=
 // @homepage     https://github.com/eissar/bytm-plugin-playlist-sidebar
 // @homepageURL  https://github.com/eissar/bytm-plugin-playlist-sidebar
 // @source       https://github.com/eissar/bytm-plugin-playlist-sidebar.git
 // @supportURL   https://github.com/eissar/bytm-plugin-playlist-sidebar/issues
 // @match        https://youtube.com/*
 // @match        https://music.youtube.com/*
-// @resource     icon_1000  https://raw.githubusercontent.com/Sv443/BetterYTM-Plugin-Template/BUILD_ERROR/assets/plugin_icon_1000x1000.png#sha256=IrFR29ZTCXuH5WsSVcmPn5FA+GvBopOyGR9lFSi4s5c=
-// @resource     icon_128   https://raw.githubusercontent.com/Sv443/BetterYTM-Plugin-Template/BUILD_ERROR/assets/plugin_icon_128x128.png#sha256=4GgH3wuDgVjYVPf1s6NURcDU0QvjnLCigrlKowsF6x8=
+// @resource     icon_1000  https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/357d167/assets/plugin_icon_1000x1000.png#sha256=IrFR29ZTCXuH5WsSVcmPn5FA+GvBopOyGR9lFSi4s5c=
+// @resource     icon_128   https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/357d167/assets/plugin_icon_128x128.png#sha256=4GgH3wuDgVjYVPf1s6NURcDU0QvjnLCigrlKowsF6x8=
 // @connect      i.ytimg.com
 // @connect      youtube.com
 // @connect      github.com
@@ -88,7 +88,7 @@
       },
       // If you have a logo, you can add it here - it should *ideally* be square and between 48x48 and 128x128.
       // Also make sure it is hosted on a server where CORS is enabled (like the GitHub CDN below), otherwise the browser will block it.
-      iconUrl: "https://raw.githubusercontent.com/Sv443/BetterYTM-Plugin-Template/main/assets/plugin_icon_128x128.png"
+      iconUrl: "https://raw.githubusercontent.com/eissar/bytm-plugin-playlist-sidebar/main/assets/plugin_icon_128x128.png"
     }
     // If you have contributors defined in package.json, you can add them here:
     // contributors,
@@ -106,7 +106,7 @@
   }
   const rawConsts = {
     buildMode: "production",
-    buildNumber: "BUILD_ERROR"
+    buildNumber: "357d167"
   };
   const getConst = (constKey, defaultVal) => {
     const val = rawConsts[constKey];
